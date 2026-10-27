@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urdu Novel World | Read Your Favorite Novels</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #54b9e7;
+    --dark: #341929;
+    --light: #9a07bb;
+    --purple: #7541a5;
+    --white: #ffffff;
+}
+
+body {
+    font-family: Georgia, "Noto Nastaliq Urdu", serif;
+    background: #dca1dc;
+    color: #38243c;
+    line-height: 1.7;
+}
+
+header {
+    background: linear-gradient(120deg, #54265f, #bb79aa);
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ffd6e7;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #ffcfdf;
+}
+
+.hero {
+    min-height: 490px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    padding: 65px 8%;
+    background: linear-gradient(135deg, #ffe4ef, #f2ddff);
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5vw, 55px);
+    color: #57265d;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #674b6a;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--pink);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn:hover {
+    background: var(--purple);
+    transform: translateY(-2px);
+}
+
+.hero-image {
+    width: 320px;
+    max-width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 150px 150px 25px 25px;
+    box-shadow: 0 15px 35px #9e638b55;
+}
+
+.search-area {
+    padding: 28px 8%;
+    text-align: center;
+    background: white;
+}
+
+.search-area input {
+    width: min(650px, 100%);
+    padding: 15px 22px;
+    border: 2px solid #f2c6df;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-area input:focus {
+    border-color: var(--pink);
+}
+
+section {
+    padding: 60px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 34px;
+    color: #59265f;
+}
+
+.section-heading p {
+    color: #876b88;
+    margin-top: 5px;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.book-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 22px #65335c12;
+    transition: 0.3s;
+    border: 1px solid #f6e4ef;
+    padding-bottom: 20px;
+}
+
+.book-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 28px #65335c25;
+}
+
+.book-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    background: #f5e1ef;
+}
+
+.book-card h3 {
+    font-size: 19px;
+    padding: 13px 15px 2px;
+    color: #55295d;
+}
+
+.book-card .author {
+    color: #a15a88;
+    padding: 0 15px;
+    font-size: 14px;
+}
+
+.book-card .description {
+    padding: 8px 15px 14px;
+    color: #776578;
+    font-size: 14px;
+}
+
+.book-card .btn {
+    margin-left: 15px;
+    padding: 9px 18px;
+    font-size: 14px;
+}
+
+.tag {
+    display: inline-block;
+    margin: 12px 15px 0;
+    padding: 3px 10px;
+    border-radius: 15px;
+    background: #ffe4ef;
+    color: #ad356b;
+    font-size: 12px;
+}
+
+.featured {
+    background: linear-gradient(120deg, #fce5f0, #eee2ff);
+}
+
+.author-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.author-card {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 5px 20px #50265012;
+}
+
+.author-card img {
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #f6c5df;
+    margin-bottom: 12px;
+}
+
+.author-card h3 {
+    color: #642e69;
+    font-size: 22px;
+}
+
+.author-card p {
+    color: #826b83;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.quote {
+    background: #4b2554;
+    color: white;
+    text-align: center;
+    padding: 65px 10%;
+}
+
+.quote h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.quote p {
+    font-size: 18px;
+    color: #f5d7e9;
+    font-style: italic;
+}
+
+.newsletter {
+    text-align: center;
+    background: white;
+}
+
+.newsletter input {
+    padding: 13px;
+    width: min(350px, 100%);
+    border: 1px solid #e6bdd8;
+    border-radius: 25px;
+    margin: 15px 5px;
+    font-size: 15px;
+}
+
+footer {
+    background: #301934;
+    color: white;
+    padding: 40px 7% 20px;
+    text-align: center;
+}
+
+footer h2 {
+    color: #ffb8d4;
+    margin-bottom: 10px;
+}
+
+footer a {
+    color: #ffd2e6;
+    text-decoration: none;
+    margin: 8px;
+}
+
+.footer-links {
+    margin: 18px 0;
+}
+
+.copyright {
+    margin-top: 22px;
+    padding-top: 15px;
+    border-top: 1px solid #654468;
+    color: #d5bfd8;
+    font-size: 13px;
+}
+
+/* Responsive design */
+@media (max-width: 950px) {
+    .book-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .author-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+        height: 300px;
+    }
+
+    section {
+        padding: 40px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Urdu <span>Novel World</span> ♡</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#new">New Novels</a>
+        <a href="#popular">Popular</a>
+        <a href="#authors">Authors</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Enter the Magical World of Urdu Novels</h1>
+        <p>
+            Discover beautiful stories of love, emotions, suspense,
+            friendship and unforgettable characters.
+            Find your next favorite Urdu novel here!
+        </p>
+        <a href="#new" class="btn">Explore New Novels ♡</a>
+    </div>
+
+    <img class="hero-image"
+         src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=700&q=85"
+         alt="Beautiful collection of books">
+</section>
+
+<!-- SEARCH -->
+<div class="search-area">
+    <input type="search"
+           id="searchInput"
+           placeholder="Search novels or authors..."
+           aria-label="Search novels or authors">
+</div>
+
+<!-- NEW NOVELS -->
+<section id="new">
+    <div class="section-heading">
+        <h2>✦ New & Featured Novels ✦</h2>
+        <p>Find a story that touches your heart.</p>
+    </div>
+
+    <div class="book-grid">
+
+        <article class="book-card">
+            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=80"
+                 alt="Novel book cover">
+            <span class="tag">Romantic</span>
+            <h3>Jannat Kay Pattay</h3>
+            <p class="author">By Nimra Ahmed</p>
+            <p class="description">A journey of mystery, faith, courage and love.</p>
+            <a class="btn" href="#contact">Read More</a>
+        </article>
+
+        <article class="book-card">
+            <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=600&q=80"
+                 alt="Literary book cover">
+            <span class="tag">Popular</span>
+            <h3>Namal</h3>
+            <p class="author">By Nimra Ahmed</p>
+            <p class="description">A suspenseful story of family, secrets and justice.</p>
+            <a class="btn" href="#contact">Read More</a>
+        </article>
+
+        <article class="book-card">
+            <img src="https://images.unsplash.com/photo-1513001900722-370f803f498d?auto=format&fit=crop&w=600&q=80"
+                 alt="Romantic novel book cover">
+            <span class="tag">Romance</span>
+            <h3>Mushaf</h3>
+            <p class="author">By Nimra Ahmed</p>
+            <p class="description">A memorable tale about faith and life's challenges.</p>
+            <a class="btn" href="#contact">Read More</a>
+        </article>
+
+        <article class="book-card">
+            <img src="https://images.unsplash.com/photo-1518744386442-2d48ac47a7eb?auto=format&fit=crop&w=600&q=80"
+                 alt="Classic books">
+            <span class="tag">New Collection</span>
+            <h3>Mehroo Nisa Collection</h3>
+            <p class="author">By Mehroo Nisa</p>
+            <p class="description">Explore stories, emotions and romantic moments.</p>
+            <a class="btn" href="#contact">Read More</a>
+        </article>
+
+        <article class="book-card">
+            <img src="https://images.unsplash.com/photo-1510172951991-856a654063f9?auto=format&fit=crop&w=600&q=80"
+                 alt="Books on a shelf">
+            <span class="tag">Readers' Choice</span>
+            <h3>Shameer Novels</h3>
+            <p class="author">By Shameer</p>
+            <p class="description">Discover your next favorite story in this collection.</p>
+            <a class="btn" href="#contact">Read More</a>
+        </article>
+
+        <article class="book-card">
+            <img src="https://images.unsplash.com/photo-1519791883288-dc8bd696e667?auto=format&fit=crop&w=600&q=80"
+                 alt="Open book">
+            <span class="tag">Emotional</span>
+            <h3>Love & Emotions</h3>
+            <p class="author">Urdu Novel Collection</p>
+            <p class="description">Stories filled with heartfelt moments and memories.</p>
+            <a class="btn" href="#contact">Read More</a>
+        </article>
+
+        <article class="book-card">
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=600&q=80"
+                 alt="Library collection">
+            <span class="tag">Mystery</span>
+            <h3>Secrets of the Heart</h3>
+            <p class="author">Urdu Novel Collection</p>
+            <p class="description">Explore suspense, unexpected turns and secrets.</p>
+            <a class="btn" href="#contact">Read More</a>
+        </article>
+
+        <article class="book-card">
+            <img src="https://images.unsplash.com/photo-1514894780887-121968d00567?auto=format&fit=crop&w=600&q=80"
+                 alt="Stack of novels">
+            <span class="tag">Editor's Pick</span>
+            <h3>Dreams & Destiny</h3>
+            <p class="author">Urdu Novel Collection</p>
+            <p class="description">A collection for readers who love meaningful stories.</p>
+            <a class="btn" href="#contact">Read More</a>
+        </article>
+
+    </div>
+</section>
+
+<!-- POPULAR SECTION -->
+<section class="featured" id="popular">
+    <div class="section-heading">
+        <h2>♡ Most Loved Categories ♡</h2>
+        <p>Choose the mood of your next reading adventure.</p>
+    </div>
+
+    <div class="book-grid">
+        <article class="book-card">
+            <img src="https://images.unsplash.com/photo-147627546607
